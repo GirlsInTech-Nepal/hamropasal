@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{%block title%}
+<title>Products</title>
+{%endblock%}
+{% block main %}
+{% load staticfiles %}
+<body>
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span></span><img src="{% static "realdeal.jpg" %}" style="height:60px;margin-left:100px;margin-top:-10px" /></span>
+      </a>
+    
+
+
+
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Clothings</a></li>
+            <li><a href="#">kitchen wares</a></li>
+            <li><a href="#">Electronics</a></li>
+            
+          </ul>
+        </li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Our Shops</li>
+        <li><a href="#contact" data-toggle="modal">Contact Us</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="modal fade" id="contact" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Contact Site</p>
+                </div>
+                <div class="modal-body">
+                 <form role="form">
+                     <div class="form-group">
+                        <label for="usr">Full Name:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                     <div class="form-group">
+                        <label for="pwd">Email:</label>
+                         <input type="password" class="form-control" id="email">
+                     </div>
+                     <div class="form-group">
+                         <label for="usr">Comment</label>
+                         <input type="text" class="form-control" id="comment">
+                    </div>
+                </form>
+                </div>
+                <div class ="modal-footer">
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+</nav>
+<style>
+.container-fluid{
+
+    height:20px;
+}
+
+
+</style>
+  
+
+  
+  
+   
+</div>
+<style>
+h1 {
+    color: rgb(255,0,0);
+}
+h3{
+    color:red;
+}
+.image{
+    display: inline-block;
+}
+</style>
+</div><style type="text/css">
+   body { background: white !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+<header id="myCarousel" class="carousel slide" style="margin-top:50px" >
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner" style="height:500px">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/static/slider1.jpg');"></div>
+                <div class="carousel-caption">
+                    <h1 style="font:black" class="animated bounceInDown"> Wanna get branded products in exclusive discounts??</h1>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/static/slider2.jpg');"></div>
+                <div class="animated bounceInDown" class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/static/slider3.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2></h2>
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <!-- Page Content -->
+    <div class="container" style="margin-top:150px">
+
+        
+
+
+        <div class='container'>
+    <div class="page-header">
+    <h3>List of Products</h3>
+
+
+
+<div class="paragraphs">
+  <div class="row">
+    <div class="span4">
+    
+     
+
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      <p>
+
+    {% for product in products %}
+
+
+            <div class="well">
+             <div class="image">
+                 <div class='col-md-6'>
+                 <img src='{{product.primary_image.url}}' align='right' width='500px' height='400px' class='img-thumbnail' ,float='right'>
+                 </div>
+            </div>
+
+     
+                <ul class="list-group">
+
+                <h2 class="bg-primary">{{product.product_name}}</h2>
+            <li class="list-group-item">
+                <strong>Name:</strong>
+                <span class ="badge">{{product.product_name}}</span>
+            </li>
+            
+            
+            
+            <li class="list-group-item">
+                <strong>Type:</strong>
+                <span class ="badge">{{product.product_type}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Code:</strong>
+                <span class="badge">{{product.product_code}}
+            </li>
+            <li class="list-group-item">
+                <strong>Price:</strong>
+                <span class ="badge">{{product.price}}
+            </li>
+            <li class="list-group-item">
+                <strong>Available Quantity</strong>
+                <span class="badge"class>{{product.available_quantity}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Added Date:</strong>
+                <span class="badge"class>{{product.created_date}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Updated Date:</strong>
+                <span class="badge"class>{{product.update_date}}</span>
+            </li>
+            </ul>
+          
+
+
+      </p>
+    
+  </div>
+     
+    
+    {%endfor%}
+    </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+   
+
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+
+     
+    }
+{% endblock %}
+</body>
