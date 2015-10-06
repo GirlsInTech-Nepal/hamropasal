@@ -119,53 +119,6 @@ h3{
 </div><style type="text/css">
    body { background: white !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
-<header id="myCarousel" class="carousel slide" style="margin-top:-50px" >
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner" style="height:300px">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('/static/slider1.jpg');"></div>
-                <div class="carousel-caption">
-                    <h1 style="font:black" class="animated bounceInDown"> Wanna get branded products in exclusive discounts??</h1>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('/static/slider2.jpg');"></div>
-                <div class="animated bounceInDown" class="carousel-caption">
-                    <h2>Caption 2</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('/static/slider3.jpg');"></div>
-                <div class="carousel-caption">
-                    <h2></h2>
-                </div>
-            </div>
-            
-            
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </header>
-
-    <!-- Page Content -->
- 
 
         
 
@@ -174,43 +127,15 @@ h3{
    
 
       
-    <div class="container"> 
-    <h1>List of Products</h1>
-<div class="row">
-
-
-    {% for product in products %}
-    <div class="col-sm-6 col-md-3">
-    <div class="thumbnail" >
-
-
-                
-                    <img id="btn2"  src='{{product.primary_image.url}}' class="img-responsive"  width='180px' height='280px' class='thumbnail' >
-
-                 </a>
-                 <div class="view"><a href='{{product.primary_image.url}}' data-lightbox="Vacation" width:1000px><button type="button" class="btn btn-danger">View</button></a></div>
-                 
-                 <div class="caption">
-
-                    <h2>{{product.name}}</h2>
-                        <span class="price">{{ product.price }}</span>
-                            <a href="/productid/{{product.id}}" class="button">Show More</a>
-                   
-                   
-                 </div>
-           </div>
-        </div>
-         {%endfor%}
-    </div>
-    </div>
-
+   
 
                  
                
                  
             
-                 <!--<div class ="well">
+                <div class ="well">
                 <ul class="list-group">
+                {% for product in products%}
 
                 <h2 class="bg-primary">{{product.name}}</h2>
             <li class="list-group-item">
@@ -238,6 +163,7 @@ h3{
             </li>
            
             </ul>
+            {%endfor%}
           
 
 

@@ -18,5 +18,9 @@ def customers(request):
     customers= Category.objects.all()
     return render_to_response('customer.html',{'customers':customers})
 
+def products(request, id):
+    products=Product.objects.all(id)
+    return render_to_response('productDetail.html',{'products':products})
+
 
 
