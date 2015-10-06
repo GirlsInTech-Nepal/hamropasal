@@ -5,7 +5,54 @@
 {% block main %}
 {% load staticfiles %}
 <body>
-<nav class="navbar navbar-inverse" >
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      
+      <a class="navbar-brand" href="#"><img src="{% static "realdeal.jpg" %}" style="height:50px;margin-left:100px;margin-top:-10px" /></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style="height:60px">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li id="Configure" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          {%  for category in categories %}
+
+            <li class="dropdown-submenu">
+              <a href="/category">{{ category.name}}</a>
+              <ul class="dropdown-menu">
+               {%for producttype in producttypes%}
+                <li><a href="#">{{ producttype.product_type}} </a>
+                </li>
+                {% endfor%}
+              </ul>
+            </li>
+            {% endfor%}
+            </ul>
+            
+            </li>
+            <li ><a href="#">Contact Us</a>
+              <li ><a href="#">Log In</a>
+        </li>
+           
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+<!--<nav class="navbar navbar-inverse" >
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><span></span><img src="{% static "realdeal.jpg" %}" style="height:60px;margin-left:100px;margin-top:-10px" /></span>
@@ -15,20 +62,45 @@
 
 
     </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Clothings</a></li>
-            <li><a href="#">kitchen wares</a></li>
-            <li><a href="#">Electronics</a></li>
-            
-          </ul>
-        </li>
-        <li><a href="#">History</a></li>
+    <div class="collapse navbar-collapse" >
+      <ul class="nav navbar-nav" role="menu">
+        <li class="active"><a href="#">Home</a></li> 
+        <li class="dropdown"><a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+       
+            <ul class="dropdown-menu">
+                {%  for category in categories %}
+                
+                        <li class="dropdown-submenu" ><a class="dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" href="#">{{ category.name}} </a>
+                            <ul  id="categories-menu" class="nav nav-pills nav-stacked">
+                            {%for producttype in producttypes%}
+                            <li>
+                            <ul>
+                            <li><a href="#" class="dropdown"><a class="dropdown-toggle" role="button" aria-haspopup="true" data-toggle="dropdown" >{{ producttype.product_type}} </span></a>
+                                <ul  id="categories-menu" class="nav nav-pills nav-stacked">
+                                {%for product in products%}
+                                <li>
+                                <ul>
+                                   <li><a href="#">{{ product.name}} </span></a></li>
+                                </ul>
+                                </li>
+                                {%endfor%}
+ </ul>
+                        </li>
+
+                        </ul>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </li>
+                
+                {%endfor%}
+                </ul>
+                </li>
+
+
+         <li><a href="#">History</a></li>
         <li><a href="#">Our Shops</li>
-        <li><a href="#contact" data-toggle="modal">Contact Us</li>
+        <<li><a href="" data-toggle="modal" data-target="#contact" style="margin-left:700px">Contact Us</li>
       </ul>
     </div>
   </div>
@@ -63,10 +135,49 @@
 </div>
 
 </nav>
+-->
 <style>
-.container-fluid{
 
-    height:20px;
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-submenu > a:after {
+    display: block;
+    content:" ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-submenu:hover > a:after {
+    border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
 }
 
 
@@ -91,7 +202,7 @@ h3{
 </div><style type="text/css">
    body { background: white !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
-<header id="myCarousel" class="carousel slide" style="margin-top:50px" >
+<header id="myCarousel" class="carousel slide" style="margin-top:-50px" >
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -173,24 +284,32 @@ h3{
 
       
       <p>
+<div class="row-fluid">
+    <div class="thumbnail text-center">
 
     {% for product in products %}
 
 
-            <div class="well">
-             <div class="image">
-                 <div class='col-md-6'>
-                 <img src='{{product.primary_image.url}}' align='right' width='500px' height='400px' class='img-thumbnail' ,float='right'>
-                 </div>
-            </div>
+             <section>
+                <a href='{{product.primary_image.url}}' data-lightbox="Vacation" width:1000px> 
+                <div class="thumbnail">
+                    <img id="btn2" class="btn btn-lg btn-danger" data-toggle="collapse" src='{{product.primary_image.url}}' class="img-responsive" align='right' width='300px' height='280px' class='thumbnail' ,float='right'>
+                    </div>
+                 </a>
+           </section>
 
-     
+
+                 
+               
+                 </div>
+                 </div>
+                 <div class ="well">
                 <ul class="list-group">
 
-                <h2 class="bg-primary">{{product.product_name}}</h2>
+                <h2 class="bg-primary">{{product.name}}</h2>
             <li class="list-group-item">
                 <strong>Name:</strong>
-                <span class ="badge">{{product.product_name}}</span>
+                <span class ="badge">{{product.name}}</span>
             </li>
             
             
@@ -211,14 +330,7 @@ h3{
                 <strong>Available Quantity</strong>
                 <span class="badge"class>{{product.available_quantity}}</span>
             </li>
-            <li class="list-group-item">
-                <strong>Added Date:</strong>
-                <span class="badge"class>{{product.created_date}}</span>
-            </li>
-            <li class="list-group-item">
-                <strong>Updated Date:</strong>
-                <span class="badge"class>{{product.update_date}}</span>
-            </li>
+           
             </ul>
           
 
@@ -230,8 +342,40 @@ h3{
     
     {%endfor%}
     </div>
+<style type="text/css">
+    
+    .thumbnail {
+    position: relative;
+}
 
-        <hr>
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+}
+.well{
+
+    width:300px;
+    height:300px;
+    background-color: pink;
+}
+#categories-menu{
+    display:none;
+}
+.dropdown-submenu a:hover + #categories-menu{
+     display: block;
+
+}
+
+
+</style>
+                
+  
+
+     
+
+  
 
         <!-- Footer -->
         <footer>
@@ -258,6 +402,9 @@ h3{
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+
+
+    
     </script>
 
 
