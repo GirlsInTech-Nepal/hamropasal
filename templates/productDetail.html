@@ -5,6 +5,7 @@
 {% block main %}
 {% load staticfiles %}
 
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -123,53 +124,65 @@ h3{
         
 
 
-        
+       
+
    
 
       
    
 
-                 
-               
-                 
-            
-                <div class ="well">
-                <ul class="list-group">
-                {% for product in products%}
+ <div class ="row">
+{% for product in products%}
+                
 
-                <h2 class="bg-primary">{{product.name}}</h2>
-            <li class="list-group-item">
-                <strong>Name:</strong>
-                <span class ="badge">{{product.name}}</span>
-            </li>
+<div class="pb-left-column col-xs-12 col-sm-6 col-md-5 col-lg-5">
+<div id="image-block" class="clearfix"> 
+<div class="thumbnail">
+<img class="img-responsive" title="Samsung" alt="samsung" width="458" id="bigpic" itemprop="image" src="{{product.primary_image.url}}">
+</div>
+</div>
+</div>
+<div class="pb-right-column col-xs-12 col-sm-6 col-md-7 col-lg-7">
+
+                    <h1>{{product.name}}</h1></br>
+                    {% if product.available_quantity == 0%}
+                    <h1><mark>PRODUCT OUT OF STOCK</mark></h1>
+                    {% else %}
+                    <h3><mark>AVAILABLE</mark></h3>
+                    {% endif %}
+                    
+                   
+
+                    </h2>
+            <p class="socialsharing_product list-inline no-print"> <button type="button" class="btn btn-default btn-twitter" > <i class="icon-twitter"></i> Tweet </button> <button type="button" class="btn btn-default btn-facebook"> <i class="icon-facebook"></i> Share </button> <button type="button" class="btn btn-default btn-google-plus"> <i class="icon-google-plus"></i> Google+ </button> <button type="button" class="btn btn-default btn-pinterest" > <i class="icon-pinterest"></i> Pinterest </button></p>
+               
+         
+                 <strong>Type:</strong>
+                <span class ="badge">{{product.product_type}}</span></br>
+          
             
-            
-            
-            <li class="list-group-item">
-                <strong>Type:</strong>
-                <span class ="badge">{{product.product_type}}</span>
-            </li>
-            <li class="list-group-item">
                 <strong>Code:</strong>
-                <span class="badge">{{product.product_code}}
-            </li>
-            <li class="list-group-item">
-                <strong>Price:</strong>
-                <span class ="badge">{{product.price}}
-            </li>
-            <li class="list-group-item">
-                <strong>Available Quantity</strong>
-                <span class="badge"class>{{product.available_quantity}}</span>
-            </li>
+                <span class="badge">{{product.product_code}}</span></br>
            
-            </ul>
+            
+               
+            
+            
+                <strong>Available Quantity</strong>
+                <span class="badge"class>{{product.available_quantity}}</span></br>
+                
+             <p><mark><h1>NPR {{product.price}}</h1></mark></p>
+            
+           
+            
             {%endfor%}
           
 
 
-      </p>
+      
     
-  </div>-->
+  </div>
+  </div>
      
     
    
@@ -216,15 +229,7 @@ h3{
 
 </style>
                 
-  
-
-     
-
-  
-
-        
-
-    </div>
+  </div>
    
     <script src="{% static "js/jquery.js" %}"></script>
 
