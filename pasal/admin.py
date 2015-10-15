@@ -11,6 +11,7 @@ admin.site.register(Sales)
 admin.site.register(ProductType)
 admin.site.register(Product)
 
+
 class ProductAdmin(admin.ModelAdmin):
     fields = ('name', 'product_type','primary_image','category'
               'product_code', 'price', 'available_quantity',)

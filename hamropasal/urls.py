@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pasal/', 'pasal.views.show'),
     url(r'^productid/(?P<id>[0-9])/$', 'pasal.views.products'),
-    url(r'^register/$', 'pasal.views.contact'),
+    url(r'^register/$', 'pasal.views.contact',name='register'),
     url(r'^register_success/$', 'pasal.views.register_success'),
     url(r'^login/$', 'pasal.views.login'),
     url(r'^auth/$', 'pasal.views.auth_view'),
@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^invalid/$', 'pasal.views.invalid_login'),
     url(r'^logout/$', 'pasal.views.logout'),
     url(r'^doneContact/$', 'pasal.views.doneContact'),
-
+    
 
 
 

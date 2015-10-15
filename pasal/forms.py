@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django import modelForm
+
 
 class ContactForm(forms.Form):
     subject = forms.CharField(max_length=100)
@@ -14,5 +14,5 @@ class ContactForm(forms.Form):
         if num_words < 4:
             raise forms.ValidationError("Not enough words!")
         return message
-
+ 
 
