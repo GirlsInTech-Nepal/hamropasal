@@ -4,6 +4,7 @@ import PIL
 
 
 # Create your models here.
+
 class Category(models.Model):
     name = models.CharField(max_length=30)
     parent = models.ForeignKey('self', null=True, blank=True)
