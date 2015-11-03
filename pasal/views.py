@@ -21,6 +21,8 @@ def contact(request):
 def doneContact(request):
     return render_to_response('doneContact')
 
+def contactUs(request):
+    return render_to_response('contactus.html')
 
 def show(request):
     products=Product.objects.all()

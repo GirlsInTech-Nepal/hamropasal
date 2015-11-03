@@ -1,10 +1,5 @@
 from django.db import models
 import PIL
-
-
-
-# Create your models here.
-
 class Category(models.Model):
     name = models.CharField(max_length=30)
     parent = models.ForeignKey('self', null=True, blank=True)
@@ -15,16 +10,12 @@ class Category(models.Model):
 
 class ProductType(models.Model):
     category=models.ForeignKey(Category)
-    
     product_type = models.CharField(max_length=30)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.product_type
-
-
-
 
 class Product(models.Model):
     
@@ -34,8 +25,6 @@ class Product(models.Model):
     price = models.IntegerField()
     available_quantity = models.IntegerField()
     primary_image= models.ImageField(upload_to='Images')
-    
-
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 

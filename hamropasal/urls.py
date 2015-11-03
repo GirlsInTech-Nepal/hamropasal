@@ -33,11 +33,9 @@ urlpatterns = [
     url(r'^invalid/$', 'pasal.views.invalid_login'),
     url(r'^logout/$', 'pasal.views.logout'),
     url(r'^doneContact/$', 'pasal.views.doneContact'),
-    
+    url(r'^contactus/$', 'pasal.views.contactus'),
 
 
-
-       
-      ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
